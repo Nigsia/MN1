@@ -578,4 +578,17 @@ Aquesta és la documentació per al fitxer \textit{mn.h} que contè funcions út
   \item \textit{double*: } El vector de les $X = (x_i)$.
 \end{itemize}
 
+\section{Integració}
+
+\subsection{double trap( int n, double h, double integral, double a, double (*f)(double) )}
+\textit{Descripció: }
+  Integra usant el mètode dels trapezis.
+\\\textit{Paràmetres: }\begin{itemize}[label={--}]
+  \item \textit{int: } Nombre de subintervals en el que hem dividit l'interval inicial.
+  \item \textit{double: } El pas (la distància entre dos subintervals).
+  \item \textit{double: } El valor de la iteració anterior de la funció (és a dir, trap(n/2, h*2).
+  \item \textit{double: } El valor mínim de l'interval.
+  \item \textit{double (*f)(double): } La funció de la qual volem calcular la integral.
+\end{itemize}
+
 \end{document}

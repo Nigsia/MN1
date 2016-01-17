@@ -415,3 +415,18 @@ void  		diffiv		( int, 		double*, 	double* );
  *		- double*:		The vector of poitns that will be filled.
  */
 void 		nodes		(int, 		int,  		double,		double, 	double* );
+
+/************************************************************************************************/
+/*										Integration												*/
+/************************************************************************************************/
+
+/**
+ *  Integrates using the trapezoidal rule.
+ *  @args:
+ *  	- int:			Number of subintervals in which the interval is divided.
+ *		- double:		Step (distance between each subinterval).
+ *		- double:		Value of trap(n/2, h*2)
+ *		- double:		The lower bound for the interval. 
+ *
+ */
+double trap( int, double, double, double, double (*f)(double) );

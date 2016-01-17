@@ -1,19 +1,21 @@
 #include "../mn.h"
 #include "f.h"
 
-double trap( int n, double h, double integral, double a );
+#define NUM 2e10
+#define PREC 1.e-5
 
 int main( void )
 {
-	int n, num;
-	double h, t1, t0, dif, prec, a, b;
-	
-	num = pow(2,10);
-	prec = 1.e-5;	
+	int n;
+	double h, t1, t0, dif, a, b;
+	FILE *fin, *fout;
+
+	OPEN_IN_FILE( fin );
+	OPEN_OUT_FILE( fout );
+
+	fscanf( fin, "%lf %lf", &a, &b );
 
 	n = 1;
-	a = 0.0;
-	b = 2.0;
 	h = b-a;
 	t0 = h*(f(b)-f(a))/2.0;
 	
@@ -21,30 +23,17 @@ int main( void )
 	{	
 		n = 2*n;
 		h = h/2.0;
-		t1 = trap( n, h, t0, a );
+		t1 = trap( n, h, t0, a, &f );
 		dif = fabs( t1-t0 );
-		printf("%+.5lf\t %+.5lf\t %+.5lf\n",t0, t1, dif );
+		fprintf( fout, "%+.5lf\t %+.5lf\t %+.5lf\n",t0, t1, dif );
 		t0 = t1;
-	}while( dif > prec && 2*n < num );
+	}while( dif > PREC && 2*n < NUM );
 
-	if( dif <= prec )
-		printf( "Valor de la integral = %lf\n", t0 );
+	if( dif <= PREC )
+		fprintf( fout, "Valor de la integral = %lf\n", t0 );
 	else
-		printf( "No ha convergit.\n" );
+		fprintf( fout, "No ha convergit.\n" );
 	return 0;
 }
 
-double trap( int n, double h, double integral, double a )
-{
-	int i;
-	double res, b = a + n*h;
 
-
-	res = 0.5*integral;
-
-	for( i = 1; a+i*h < b; i+=2 )
-		res += h*f( a + i*h );
-
-	return res;
-	
-}

@@ -908,21 +908,21 @@ void nodes( int indic, int n, double min, double max, double *x )
 	switch( indic )
 	{
 		case 1:
-			for( i = 0; i < n; i++ )
+			for( i = 0; i <= n; i++ )
 			{
-				h = (max-min/(n-1));
+				h = (max-min)/(n-1);
 				x[i] = min + h*i;
 			}		
 		break;
 		case 2:
-			for( i = 0; i < n; i++ )
+			for( i = 0; i <= n; i++ )
 			{
 				x[i] = min + ( (max-min)/2 ) * cos( ( (2*i+1)*M_PI )/(2*n) + 1 ); 
 			}
 		break;
 		case 3:
 			srand( time( NULL ) );
-			for( i = 0; i < n; i++ )
+			for( i = 0; i <= n; i++ )
 			{
 				x[i] = ((double)rand()/RAND_MAX)*( max-min ) + min;
 				for( j = 0; j < i; j++ )
@@ -933,4 +933,21 @@ void nodes( int indic, int n, double min, double max, double *x )
 	}
 	
 	return;
+}
+
+/************************************************************************************************/
+/*										INTEGRATION												*/
+/************************************************************************************************/
+
+double trap( int n, double h, double integral, double a, double (*f)(double) )
+{
+	int i;
+	double res, b = a + n*h;
+
+	res = 0.5*integral;
+
+	for( i = 1; i < n; i+=2 )
+		res += h*f( a + i*h );
+
+	return res;
 }
