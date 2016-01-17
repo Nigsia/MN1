@@ -25,11 +25,10 @@ Matriu A^{-1}
 +0.0000	 +0.0000	 +0.0000	 +6.0000	 
 
 
-norma infinit de A^{-1} = 6.000000
+Norma infinit de A^{-1} = 6.000000
 
 
-nombre de condicio = 96.000000
-
+Nombre de condicio = 96.000000
 
 
 Coeficients del polinomi interpolador:

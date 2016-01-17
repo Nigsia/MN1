@@ -48,12 +48,12 @@ int main(void)
     fdprintm( b, fout, n+1 );
 
     normaB = infinity_norm( b, n+1 );
-    fprintf( fout, "\n\nnorma infinit de A^{-1} = %lf\n\n" , normaB );
+    fprintf( fout, "\n\nNorma infinit de A^{-1} = %lf\n\n" , normaB );
     ncondicio = normaA * normaB;
-    fprintf( fout, "\nnombre de condicio = %lf\n\n" , ncondicio );
+    fprintf( fout, "\nNombre de condicio = %lf\n\n" , ncondicio );
 
     solve_LUx ( a, f, n+1 );
-    fprintf( fout ,"\n\nCoeficients del polinomi interpolador:\n\n" );
+    fprintf( fout ,"\nCoeficients del polinomi interpolador:\n\n" );
     fdprintv( f, fout, n+1 );
 
     fclose( fin );
