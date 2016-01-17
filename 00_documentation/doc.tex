@@ -1,0 +1,581 @@
+\documentclass[a4paper,10pt, notitlepage]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{enumitem}
+\usepackage{amsmath}
+
+%opening
+\title{Documentació Mètodes Numèrics 1}
+\author{Ignasi Sánchez Rodríguez}
+
+\begin{document}
+
+\begin{titlepage}
+ 
+
+\maketitle
+
+\begin{abstract}
+Aquesta és la documentació per al fitxer \textit{mn.h} que contè funcions útils per a la assignatura \textit{Mètodes Numèrics I} del grau de Matemàtiques de la Universitat de Barcelona.
+\end{abstract}
+
+\end{titlepage}
+
+\tableofcontents
+
+\newpage
+
+\section{Assignació de memòria}
+\subsection{double** dmallocm( int n )}
+\textit{Descripció: }
+  Assigna memòria per a una matriu de dimensió $n$x$n$ de tipus double.
+\\\textit{Paràmetres: }\begin{itemize}[label={--}]
+  \item \textit{int: } Dimensió de la matriu.
+\end{itemize}
+\textit{Retorna: } Una matriu $n$x$n$ de tipus double.
+
+
+
+\subsection{double* dmallocv( int n )}
+\textit{Descripció: }
+  Assigna memòria per a un vector de dimensió $n$ de tipus double.
+\\\textit{Paràmetres: }\begin{itemize}[label={--}]
+  \item \textit{int: } Dimensió del vector.
+\end{itemize}
+\textit{Retorna: } Un vector de dimensió $n$ de tipus double.
+ 
+ 
+ 
+\subsection{int** imallocm( int n )}
+\textit{Descripció: }
+  Assigna memòria per a una matriu de dimensió $n$x$n$ de tipus int.
+\\\textit{Paràmetres: }\begin{itemize}[label={--}]
+  \item \textit{int: } Dimensió de la matriu.
+\end{itemize}
+\textit{Retorna: } Una matriu $n$x$n$ de tipus int.
+
+
+
+\subsection{int* imallocv( double **a, int n )}
+\textit{Descripció: }
+  Assigna memòria per a un vector de dimensió $n$ de tipus int.
+\\\textit{Paràmetres: }\begin{itemize}[label={--}]
+  \item \textit{int: } Dimensió del vector.
+\end{itemize}
+\textit{Retorna: } Un vector de dimensió $n$ de tipus int.
+
+
+
+\subsection{void dfreem( int **a, int n )}
+\textit{Descripció: }
+  Llibera memòria d'una matriu $n$x$n$-dimensional de tipus double.
+\\\textit{Paràmetres: }\begin{itemize}[label={--}]
+  \item \textit{double**: } La matriu.
+  \item \textit{int: } Dimensió de la matriu.
+\end{itemize}
+\textit{Retorna: } ---
+
+
+
+\subsection{void ifreem( int **a, int n )}
+\textit{Descripció: }
+  Llibera memòria d'una matriu $n$x$n$-dimensional de tipus int.
+\\\textit{Paràmetres: }\begin{itemize}[label={--}]
+  \item \textit{int**: } La matriu.
+  \item \textit{int: } Dimensió de la matriu.
+\end{itemize}
+\textit{Retorna: } ---
+
+
+
+\section{Inicialitzacio de matrius i vectors}
+\subsection{double** identity\_matrix( int n )}
+\textit{Descripció: }
+  Assigna i omple una matriu identitat $n$x$n$-dimensional (Una matriu identitat és una matriu de la forma $A = 
+  \begin{pmatrix}
+    1 & 0 & \dots & 0 \\
+    0 & 1 & \dots & 0 \\
+    \vdots & \vdots & \ddots & \vdots \\
+    0 & 0 & \dots & 1 
+  \end{pmatrix}$)
+\\\textit{Paràmetres: }\begin{itemize}[label={--}]
+  \item \textit{int: } Dimensió de la matriu.
+\end{itemize}
+\textit{Retorna: } Una matriu identitat de dimensió $n$x$n$.
+
+
+
+\subsection{double** drandom\_matrix( int n, double min, double max )}
+\textit{Descripció: }
+  Assigna i omple una matriu $n$x$n$-dimensional amb valors double aleatoris.
+\\\textit{Paràmetres: }\begin{itemize}[label={--}]
+  \item \textit{int: } Dimensió de la matriu.
+  \item \textit{double: } El valor mínim.
+  \item \textit{double: } El valor màxim.
+\end{itemize}
+\textit{Retorna: } Una matriu de dimensió $n$x$n$ amb valors double aleatoris.
+
+
+
+\subsection{int** irandom\_matrix( int n, int min, int max )}
+\textit{Descripció: }
+  Assigna i omple una matriu $n$x$n$-dimensional amb valors int aleatoris.
+\\\textit{Paràmetres: }\begin{itemize}[label={--}]
+  \item \textit{int: } Dimensió de la matriu.
+  \item \textit{int: } El valor mínim.
+  \item \textit{int: } El valor màxim.
+\end{itemize}
+\textit{Retorna: } Una matriu de dimensió $n$x$n$ amb valors int aleatoris.
+
+
+
+\subsection{double* natural\_base\_vec( int n, unsigned int j )}
+\textit{Descripció: }
+  Assigna i omple el $j$-èssim vector de la base canònica (el vector $j$-èssim de la base canònica és de la forma $(0,\dots,0,\stackrel{(j)}{1}, 0, \dots, 0)$)
+\\\textit{Paràmetres: }\begin{itemize}[label={--}]
+  \item \textit{int: } Dimensió del vector.
+  \item \textit{unsigned int: } L'índex del 1.
+\end{itemize}
+\textit{Retorna: } El $j$-èssim vector $n$-dimensional de la base canònica.
+
+
+
+\subsection{double* drandom\_vector( int n, double min, double max )}
+\textit{Descripció: }
+  Assigna i omple un vector $n$-dimensional amb valors double aleatoris.
+\\\textit{Paràmetres: }\begin{itemize}[label={--}]
+  \item \textit{int: } Dimensió del vector.
+  \item \textit{double: } El valor mínim.
+  \item \textit{double: } El valor màxim.
+\end{itemize}
+\textit{Retorna: } Un vector $n$-dimensional amb valors double aleatoris.
+
+
+
+\subsection{int* irandom\_vector( int n, int min, int max )}
+\textit{Descripció: }
+  Assigna i omple un vector $n$-dimensional amb valors int aleatoris.
+\\\textit{Paràmetres: }\begin{itemize}[label={--}]
+  \item \textit{int: } Dimensió del vector.
+  \item \textit{int: } El valor mínim.
+  \item \textit{int: } El valor màxim.
+\end{itemize}
+\textit{Retorna: } Un vector $n$-dimensional amb valors int aleatoris.
+
+
+
+\section{Imprimir i administració de fitxers}
+\subsection{void printe( char* str )}
+\textit{Descripció: }
+  Imprimeix el missatge donat i surt del programa amb un codi d'error 1.
+\\\textit{Paràmetres: }\begin{itemize}[label={--}]
+  \item \textit{char*: } Un missatge per imprimir.
+\end{itemize}
+\textit{Retorna: } ---
+
+
+
+\subsection{void dprintm( double **a, int n )}
+\textit{Descripció: }
+  Imprimeix una matriu $n$x$n$-dimensional de valors double.
+\\\textit{Paràmetres: }\begin{itemize}[label={--}]
+  \item \textit{double**: } La matriu a imprimir.
+  \item \textit{int: } Dimensió de la matriu.
+\end{itemize}
+\textit{Retorna: } ---
+
+
+
+\subsection{void iprintm( int **a, int n )}
+\textit{Descripció: }
+  Imprimeix una matriu $n$x$n$-dimensional de valors int.
+\\\textit{Paràmetres: }\begin{itemize}[label={--}]
+  \item \textit{int**: } La matriu a imprimir.
+  \item \textit{int: } Dimensió de la matriu.
+\end{itemize}
+\textit{Retorna: } ---
+
+
+
+\subsection{void dprintv( double *v, int n )}
+\textit{Descripció: }
+  Imprimeix un vector $n$-dimensional de valors double.
+\\\textit{Paràmetres: }\begin{itemize}[label={--}]
+  \item \textit{double*: } El vector a imprimir.
+  \item \textit{int: } Dimensió del vector.
+\end{itemize}
+\textit{Retorna: } ---
+
+
+
+\subsection{void iprintv( int *v, int n )}
+\textit{Descripció: }
+  Imprimeix un vector $n$-dimensional de valors int.
+\\\textit{Paràmetres: }\begin{itemize}[label={--}]
+  \item \textit{int*: } El vector a imprimir.
+  \item \textit{int: } Dimensió del vector.
+\end{itemize}
+\textit{Retorna: } ---
+
+
+\subsection{void fdprintm( double **a, FILE *f, int n )}
+\textit{Descripció: }
+  Imprimeix una matriu $n$x$n$-dimensional de valors double a un fitxer.
+\\\textit{Paràmetres: }\begin{itemize}[label={--}]
+  \item \textit{double**: } La matriu a imprimir.
+  \item \textit{FILE*: } El fitxer on volem imprimir. Ha d'estar obert. 
+  \item \textit{int: } Dimensió de la matriu.
+\end{itemize}
+\textit{Retorna: } ---
+
+
+
+\subsection{void fiprintm( int **a, FILE *f, int n )}
+\textit{Descripció: }
+  Imprimeix una matriu $n$x$n$-dimensional de valors int en un fitxer.
+\\\textit{Paràmetres: }\begin{itemize}[label={--}]
+  \item \textit{int**: } La matriu a imprimir.
+  \item \textit{FILE*: } El fitxer on volem imprimir. Ha d'estar obert.
+  \item \textit{int: } Dimensió de la matriu.
+\end{itemize}
+\textit{Retorna: } ---
+
+
+
+\subsection{void fdprintv( double *v, FILE *f, int n )}
+\textit{Descripció: }
+  Imprimeix un vector $n$-dimensional de valors double en un fitxer.
+\\\textit{Paràmetres: }\begin{itemize}[label={--}]
+  \item \textit{double*: } El vector a imprimir.
+  \item \textit{FILE*: } El fitxer on volem imprimir. Ha d'estar obert.
+  \item \textit{int: } Dimensió del vector.
+\end{itemize}
+\textit{Retorna: } ---
+
+
+
+\subsection{void fiprintv( int *v, FILE *f, int n )}
+\textit{Descripció: }
+  Imprimeix un vector $n$-dimensional de valors int en un fitxer.
+\\\textit{Paràmetres: }\begin{itemize}[label={--}]
+  \item \textit{int*: } El vector a imprimir.
+  \item \textit{FILE*: } El fitxer on volem imprimir. Ha d'estar obert.
+  \item \textit{int: } Dimensió del vector.
+\end{itemize}
+\textit{Retorna: } ---
+
+
+
+\subsection{void printPALU( double **lu, int *p, int n )}
+\textit{Descripció: }
+  Imprimeix la següent informació sobre la descomposició $PA=LU$:
+  \begin{itemize}
+   \item El vector de permutacions $p$.
+   \item La matriu triangular inferior amb uns a la diagonal $L$.
+   \item La matrius triangular superior $U$.
+   \item La matriu $LU$.
+   \item El producte $L*U$
+  \end{itemize}
+
+\textit{Paràmetres: }\begin{itemize}[label={--}]
+  \item \textit{double**: } La matriu $LU$.
+  \item \textit{int*: } El vector de permutacions.
+  \item \textit{int: } La dimensió de la matriu i del vector.
+\end{itemize}
+\textit{Retorna: } ---
+
+
+
+\subsection{void printLU( double **lu, int n )}
+\textit{Descripció: }
+  Imprimeix la següent informació sobre la descomposició $A=LU$:
+  \begin{itemize}
+   \item La matriu triangular inferior amb uns a la diagonal $L$.
+   \item La matrius triangular superior $U$.
+   \item La matriu $LU$.
+   \item El producte $L*U$
+  \end{itemize}
+
+\textit{Paràmetres: }\begin{itemize}[label={--}]
+  \item \textit{double**: } La matriu $LU$.
+  \item \textit{int: } La dimensió de la matriu i del vector.
+\end{itemize}
+\textit{Retorna: } ---
+
+
+
+\subsection{void fprintPALU( double **lu, int *p, FILE *f, int n )}
+\textit{Descripció: }
+  Imprimeix la següent informació sobre la descomposició $PA=LU$ en un fitxer:
+  \begin{itemize}
+   \item El vector de permutacions $p$.
+   \item La matriu triangular inferior amb uns a la diagonal $L$.
+   \item La matrius triangular superior $U$.
+   \item La matriu $LU$.
+   \item El producte $L*U$
+  \end{itemize}
+
+\textit{Paràmetres: }\begin{itemize}[label={--}]
+  \item \textit{double**: } La matriu $LU$.
+  \item \textit{int*: } El vector de permutacions.
+  \item \textit{FILE*: } El fitxer on volem imprimir. Ha d'estar obert.
+  \item \textit{int: } La dimensió de la matriu i del vector.
+\end{itemize}
+\textit{Retorna: } ---
+
+
+
+\subsection{void fprintLU( double **lu, FILE *f, int n )}
+\textit{Descripció: }
+  Imprimeix la següent informació sobre la descomposició $A=LU$ en un fitxer:
+  \begin{itemize}
+   \item La matriu triangular inferior amb uns a la diagonal $L$.
+   \item La matrius triangular superior $U$.
+   \item La matriu $LU$.
+   \item El producte $L*U$
+  \end{itemize}
+
+\textit{Paràmetres: }\begin{itemize}[label={--}]
+  \item \textit{double**: } La matriu $LU$.
+  \item \textit{FILE*: } El fitxer on volem imprimir. Ha d'estar obert.
+  \item \textit{int: } La dimensió de la matriu i del vector.
+\end{itemize}
+\textit{Retorna: } ---
+
+
+
+\subsection{void OPEN\_IN\_FILE( FILE **f )}
+\label{subsec:openinfile}
+\textit{Descripció: }
+  Obre el fitxer **f com un fitxer d'entrada amb el nom del fitxer en el que estem treballant. Per exeple, si estem treballant en \textit{exemple.c}, el fitxer d'entrada que obrirà serà el \textit{exemple.in}:
+\textit{Paràmetres: }\begin{itemize}[label={--}]
+   \item \textit{FILE**: } La referència al fitxer que volem obrir.
+\end{itemize}
+\textit{Retorna: } ---
+
+
+
+\subsection{void OPEN\_OUT\_FILE( FILE **f )}
+\label{subsec:openoutfile}
+\textit{Descripció: }
+  Obre el fitxer **f com un fitxer de sortida amb el nom del fitxer en el que estem treballant. Per exeple, si estem treballant en \textit{exemple.c}, el fitxer de sortida que obrirà serà el \textit{exemple.out}:
+
+\textit{Paràmetres: }\begin{itemize}[label={--}]
+   \item\textit{FILE**: } La referència al fitxer que volem obrir.
+\end{itemize}
+\textit{Retorna: } ---
+
+
+
+\subsection{void file\_open( FILE** f, const char* name, int inout )}
+\textit{Descripció: }
+  Usada en les definicions \ref{subsec:openinfile} i \ref{subsec:openoutfile}. És recomanable no usar-la.
+
+\textit{Paràmetres: }\begin{itemize}[label={--}]
+  \item \textit{FILE**: } La referència al fitxer que volem obrir
+  \item \textit{char*: } El nom que volem donar-li al fitxer. El fitxer s'anomenarà \textit{name.in} o \textit{name.out} depenent del paràmetre \textit{inout}.
+  \item \textit{int: } El valor d'aquest paràmetre determina si és un fitxer d'entrada o de sortida. Si $inout==0$, aleshores és un fitxer d'entrada. Si $inout>0$ aleshores és un fitxer de sortida.
+\end{itemize}
+\textit{Retorna: } ---
+
+
+
+\section{Operacions amb matrius}
+\subsection{double LU\_factorization( double **a, int n )}
+\textit{Descripció: }
+  Calcula la factorització $LU$ de la matriu $n$x$n$-dimensional si és possible.
+\\\textit{Paràmetres: }\begin{itemize}[label={--}]
+  \item \textit{double**: } La matriu a factoritzar.
+  \item \textit{int: } Dimensió de la matriu.
+\end{itemize}
+\textit{Retorna: } El determinant de la matriu.
+
+
+
+\subsection{double PALU\_factorization( double **a, int *p, int n )}
+\textit{Descripció: }
+  Calcula la factorització $LU$ amb permutació de la matriu $n$x$n$-dimensional si és possible.
+\\\textit{Paràmetres: }\begin{itemize}[label={--}]
+  \item \textit{double**: } La matriu a factoritzar.
+  \item \textit{int*: } El vector de permutacions.
+  \item \textit{int: } Dimensió de la matriu i del vector.
+\end{itemize}
+\textit{Retorna: } El determinant de la matriu.
+
+
+
+\subsection{double** LU\_product( double **lu, int n )}
+\textit{Descripció: }
+  El producte de la matriu $LU$.
+\\\textit{Paràmetres: }\begin{itemize}[label={--}]
+  \item \textit{double**: } La matriu a factoritzar.
+  \item \textit{int: } Dimensió de la matriu.
+\end{itemize}
+\textit{Retorna: } La matriu producte.
+
+
+
+\subsection{double infinity\_norm( double **a, int n )}
+\textit{Descripció: }
+  Calcula la norma infinit $\|\ \|_\infty$ de la matriu $n$x$n$-dimensional.
+\\\textit{Paràmetres: }\begin{itemize}[label={--}]
+  \item \textit{double**: } La matriu de la que volem trobar la norma.
+  \item \textit{int: } Dimensió de la matriu.
+\end{itemize}
+\textit{Retorna: } El determinant de la matriu.
+
+
+
+\subsection{void solve\_LUx( double **lu, double *b, int n )}
+\textit{Descripció: }
+  Resol el sistema lineal $LUx = b$.
+\\\textit{Paràmetres: }\begin{itemize}[label={--}]
+  \item \textit{double**: } La matriu $LU$.
+  \item \textit{double*: } El vector de termes independents.
+  \item \textit{int: } Dimensió de la matriu i del vector.
+\end{itemize}
+\textit{Retorna: } ---
+
+
+
+\subsection{void solve\_PLUx( double **lu, double *b, int *p, int n )}
+\textit{Descripció: }
+  Resol el sistema lineal $LUx = Pb$, on $LU$ és una matriu factoritzada amb permutació.
+\\\textit{Paràmetres: }\begin{itemize}[label={--}]
+  \item \textit{double**: } La matriu $LU$.
+  \item \textit{double*: } El vector de termes independents.
+  \item \textit{int*: } El vector de permutacions.
+  \item \textit{int: } Dimensió de la matriu i dels vectors.
+\end{itemize}
+\textit{Retorna: } ---
+
+
+
+\subsection{void triinf( double **lu, double *b, int n )}
+\textit{Descripció: }
+  Resol el sistema lineal $Lx = b$, on $L$ és una matriu triagular inferior amb uns a la diagonal.
+\\\textit{Paràmetres: }\begin{itemize}[label={--}]
+  \item \textit{double**: } La matriu $L$.
+  \item \textit{double*: } El vector de termes independents.
+  \item \textit{int: } Dimensió de la matriu i del vector.
+\end{itemize}
+\textit{Retorna: } ---
+
+
+
+\subsection{void trisup( double **lu, double *b, int n )}
+\textit{Descripció: }
+  Resol el sistema lineal $Ux = b$, on $U$ és una matriu triagular superior.
+\\\textit{Paràmetres: }\begin{itemize}[label={--}]
+  \item \textit{double**: } La matriu $U$.
+  \item \textit{double*: } El vector de termes independents.
+  \item \textit{int: } Dimensió de la matriu i del vector.
+\end{itemize}
+\textit{Retorna: } ---
+
+
+
+\subsection{void permute\_b( double *b, int *p, int n )}
+\textit{Descripció: }
+  Permuta el vector $b$ segons el vector de permutacions $p$.
+\\\textit{Paràmetres: }\begin{itemize}[label={--}]
+  \item \textit{double*: } El vector a permutat.
+  \item \textit{int*: } El vector de permutacions.
+  \item \textit{int: } Dimensió dels vectors.
+\end{itemize}
+\textit{Retorna: } ---
+
+
+
+\subsection{double** inverse( double **a, int n )}
+\textit{Descripció: }
+  Inverteix la matriu factoritzant $A=LU$ i usant resolent $n$ sistemes lineals $LUx=Id_i$, on $Id_i$ és la $i$-èssima columna de la matriu identitat. Finalment, transposa la matriu.
+\\\textit{Paràmetres: }\begin{itemize}[label={--}]
+  \item \textit{double**: } La matriu a invertir.
+  \item \textit{int: } Dimensió de la matriu.
+\end{itemize}
+\textit{Retorna: } La inversa de la matriu.
+
+
+
+\subsection{double** sum( double **a, double **b, int n )}
+\textit{Descripció: }
+  Calcula la suma $A+B$.
+\\\textit{Paràmetres: }\begin{itemize}[label={--}]
+  \item \textit{double**: } La matriu $A$.
+  \item \textit{double**: } La matriu $B$.
+  \item \textit{int: } Dimensions de les matrius.
+\end{itemize}
+\textit{Retorna: } La suma $A+B$.
+
+
+
+\subsection{double** product( double **a, double **b, int n )}
+\textit{Descripció: }
+  Calcula el producte $A\cdot B$.
+\\\textit{Paràmetres: }\begin{itemize}[label={--}]
+  \item \textit{double**: } La matriu $A$.
+  \item \textit{double**: } La matriu $B$.
+  \item \textit{int: } Dimensions de les matrius.
+\end{itemize}
+\textit{Retorna: } El producte $A\cdot B$.
+
+
+
+
+\section{Operacions amb polinomis / Interpolació}
+
+
+
+\subsection{double horner( double z, int n, double *x, double *f )}
+\textit{Descripció: }
+  Evalua el polinomi en la base $(x-x_i)$, en el punt $z$.
+\\\textit{Paràmetres: }\begin{itemize}[label={--}]
+  \item \textit{double: } El punt en el que volem evaluar el polinomi.
+  \item \textit{int: } El grau del polinomi.
+  \item \textit{double*: } El vector de les $X = (x_i)$.
+  \item \textit{double*: } El vector de la evaluació $f(X) = ( f(x_i) )$
+\end{itemize}
+\textit{Retorna: } El valor del polinomi en el punt $z$.
+
+
+\subsection{void hornerd( double z, int n, double *x, double *f, double p[2] )}
+\textit{Descripció: }
+  Evalua el polinomi i la seva derivada, en la base $(x-x_i)$, en el punt $z$.
+\\\textit{Paràmetres: }\begin{itemize}[label={--}]
+  \item \textit{double: } El punt en el que volem evaluar el polinomi.
+  \item \textit{int: } El grau del polinomi.
+  \item \textit{double*: } El vector de les $X = (x_i)$.
+  \item \textit{double*: } El vector de la evaluació $f(X) = ( f(x_i) )$
+  \item \textit{double[2]: } El vector de valors de les evaluacions del polinomi i de la seva derivada en el punt $z$. La primera component és el valor de la evalaució del polinomi i la segona component la de la seva derivada.
+\end{itemize}
+
+
+
+\subsection{void difdiv( int n, double *x, double *f )}
+\textit{Descripció: }
+  Calcula els coeficients del polinomi interpolador usant el mètode de les diferències dividides.
+\\\textit{Paràmetres: }\begin{itemize}[label={--}]
+  \item \textit{int: } El grau del polinomi.
+  \item \textit{double*: } El vector de les $X = (x_i)$.
+  \item \textit{double*: } El vector de la evaluació $f(X) = ( f(x_i) )$
+\end{itemize}
+
+
+
+\subsection{void nodes( int indic, int n, double min, double max, double *x )}
+\textit{Descripció: }
+  Crea un vector de valors per a les $x = (x_i) \in [min, max]$, usant diferents mètodes.
+\\\textit{Paràmetres: }\begin{itemize}[label={--}]
+  \item \textit{int: } El mètode que volem usar:
+  \begin{enumerate}[label=\arabic*.]
+      \item Punts equidistants
+      \item Punts de Chebyshev
+      \item Punts aleatòris diferents.
+  \end{enumerate}
+  \item \textit{int: } El grau del polinomi.
+  \item \textit{double: } La cota inferior dels punts.
+  \item \textit{double: } La cota superior dels punts.
+  \item \textit{double*: } El vector de les $X = (x_i)$.
+\end{itemize}
+
+\end{document}

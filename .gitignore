@@ -1,0 +1,16 @@
+### Files I don't want shared
+test.*
+tst
+SanchezRodriguezIgnasiP1.c
+
+### Compiled programs
+*.exe
+
+### Backup ~ files. Should clean, but...
+*.*~
+
+### Latex auxiliary files. Again, I should clean them but...
+*.aux
+*.log
+*.toc
+*.idx
