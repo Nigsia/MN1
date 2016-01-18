@@ -33,7 +33,7 @@ int main( void )
 	for( i = 0; i <= n; i++ )
 		f[i] = fun( x[i] );
 
-	difdiv( n+1, x, f );
+	difdiv( n, x, f );
 	
 	fprintf( fout, "#z\tf(z)\tf'(z)\tp(z)\tp'(z)\n" );
 	

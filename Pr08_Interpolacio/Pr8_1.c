@@ -27,7 +27,7 @@ int main( void )
 	    }
 	}
 
-	difdiv( n+1, x, f );
+	difdiv( n, x, f );
 
 	h = (x[n] - x[0])/M;
 

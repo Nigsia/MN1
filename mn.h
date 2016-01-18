@@ -891,8 +891,8 @@ void difdiv( int n, double *x, double *f )
 {
 	int i, k;
 
-	for( k = 1; k < n; k++ )
-		for( i = n-1; i >= k; i-- )
+	for( k = 1; k <= n; k++ )
+		for( i = n; i >= k; i-- )
 			f[i] = ( f[i]-f[i-1] )/( x[i]-x[i-k] );
 
 	return;
@@ -951,3 +951,4 @@ double trap( int n, double h, double integral, double a, double (*f)(double) )
 
 	return res;
 }
+

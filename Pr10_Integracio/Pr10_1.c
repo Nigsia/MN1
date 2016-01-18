@@ -35,5 +35,3 @@ int main( void )
 		fprintf( fout, "No ha convergit.\n" );
 	return 0;
 }
-
-

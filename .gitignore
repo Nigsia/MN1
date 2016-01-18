@@ -3,11 +3,12 @@ test.*
 tst
 SanchezRodriguezIgnasiP1.c
 
-### Compiled programs
-*.exe
+### Python test
+*.py
+*.pyc
 
 ### Backup ~ files. Should clean, but...
-*.*~
+*~
 
 ### Latex auxiliary files. Again, I should clean them but...
 *.aux
